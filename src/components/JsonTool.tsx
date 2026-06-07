@@ -23,7 +23,9 @@ export function JsonTool() {
   function runValidate(): ValidationResult {
     const r = validate(input);
     setResult(r);
-    setParsed(r.ok ? r.value : null);
+    // Keep the last good parsed value on failure (only Clear resets it),
+    // so the tree view mirrors how the formatted pane retains last-good output.
+    if (r.ok) setParsed(r.value);
     return r;
   }
 
@@ -93,6 +95,10 @@ export function JsonTool() {
           <div className="min-h-0 flex-1 overflow-auto">
             {view === "formatted" ? (
               <JsonEditor value={output} readOnly />
+            ) : parsed === null && !result?.ok ? (
+              <div className="p-3 text-sm text-zinc-500">
+                Format or Validate to see the tree view.
+              </div>
             ) : (
               <JsonTree data={parsed} />
             )}

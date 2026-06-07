@@ -53,4 +53,19 @@ describe("validate", () => {
     expect(r.ok).toBe(true);
     if (r.ok) expect(r.stats.bytes).toBe(4);
   });
+
+  it("reports the error line for a multi-line missing comma", () => {
+    const r = validate('{\n  "a": 1\n  "b": 2\n}'); // missing comma; error on line 3
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.error.line).toBe(3);
+  });
+
+  it("rejects an unterminated string", () => {
+    expect(validate('"abc').ok).toBe(false);
+  });
+
+  it("accepts large/precise numbers", () => {
+    const r = validate("123456789012345678901234567890");
+    expect(r.ok).toBe(true);
+  });
 });

@@ -22,9 +22,9 @@ const primary =
 export function Toolbar(props: ToolbarProps) {
   return (
     <div className="flex flex-wrap items-center gap-1 border-b border-zinc-200 px-2 py-1.5 dark:border-zinc-800">
-      <button className={primary} onClick={props.onFormat}>Format</button>
-      <button className={btn} onClick={props.onMinify}>Minify</button>
-      <button className={btn} onClick={props.onValidate}>Validate</button>
+      <button type="button" className={primary} onClick={props.onFormat}>Format</button>
+      <button type="button" className={btn} onClick={props.onMinify}>Minify</button>
+      <button type="button" className={btn} onClick={props.onValidate}>Validate</button>
 
       <span className="mx-1 h-5 w-px bg-zinc-200 dark:bg-zinc-700" />
 
@@ -47,10 +47,10 @@ export function Toolbar(props: ToolbarProps) {
 
       <span className="mx-1 h-5 w-px bg-zinc-200 dark:bg-zinc-700" />
 
-      <button className={btn} onClick={props.onCopy}>Copy</button>
-      <button className={btn} onClick={props.onDownload}>Download</button>
-      <button className={btn} onClick={props.onClear}>Clear</button>
-      <button className={btn} onClick={props.onSample}>Sample</button>
+      <button type="button" className={btn} onClick={props.onCopy}>Copy</button>
+      <button type="button" className={btn} onClick={props.onDownload}>Download</button>
+      <button type="button" className={btn} onClick={props.onClear}>Clear</button>
+      <button type="button" className={btn} onClick={props.onSample}>Sample</button>
     </div>
   );
 }
