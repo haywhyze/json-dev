@@ -4,6 +4,7 @@ import { useState } from "react";
 import { JsonEditor } from "./JsonEditor";
 import { Toolbar } from "./Toolbar";
 import { StatusBar } from "./StatusBar";
+import { JsonTree } from "./JsonTree";
 import { format, minify } from "@/lib/json/format";
 import { validate } from "@/lib/json/validate";
 import { SAMPLE_JSON } from "@/lib/json/sample";
@@ -93,7 +94,7 @@ export function JsonTool() {
             {view === "formatted" ? (
               <JsonEditor value={output} readOnly />
             ) : (
-              <div className="p-3 text-sm text-zinc-500">Tree view coming in Task 7.</div>
+              <JsonTree data={parsed} />
             )}
           </div>
         </div>
