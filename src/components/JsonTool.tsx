@@ -41,7 +41,7 @@ export function JsonTool() {
 
   function handleCopy() {
     const text = output || input;
-    if (text) void navigator.clipboard.writeText(text);
+    if (text) navigator.clipboard.writeText(text).catch(() => {});
   }
 
   function handleDownload() {
